@@ -1,16 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "katasandi";
-$dbname = "studi-kasus-1";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include_once("connection.php");
+$db = Database::getInstance();
+$conn = $db->getConnection(); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // collect value of input field
@@ -24,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // output data of each row
         while($row = $result->fetch_assoc()) {
             if ($row["password"] == $password) {
-                header('Location: table.html');
+                header('Location: table.php');
             } else {
                 echo "Login Failed";
             }
