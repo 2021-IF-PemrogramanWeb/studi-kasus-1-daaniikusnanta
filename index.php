@@ -1,3 +1,37 @@
+<?php
+session_start();
+
+if (isset($_SESSION['username'])) {
+  header('Location: table.php');
+}
+
+include_once("connection.php");
+$db = Database::getInstance();
+$conn = $db->getConnection(); 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            if ($row["password"] == $password) {
+              $_SESSION['username'] = $row['username'];
+              header('Location: table.php');
+            } else {
+                echo "<script>alert('Username atau password Anda salah. Silahkan coba lagi!')</script>";
+            }
+        }
+    } else {
+        echo "<script>alert('Username anda tidak dapat ditemukan. Silahkan coba lagi!')</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +58,7 @@
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="login.php" method="post">
+      <form action="" method="post">
         <div class="input-group mb-3">
           <input type="username" class="form-control" placeholder="Username" name="username">
           <div class="input-group-append">
