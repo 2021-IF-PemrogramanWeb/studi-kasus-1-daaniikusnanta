@@ -29,8 +29,8 @@ if (!isset($_SESSION['username'])) {
         </nav>
 
         <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
-            <a href="" class="brand-link">
-                <span class="brand-text font-weight-light">Dashboard</span>
+        <a href="" class="brand-link text-center">
+                <span class="brand-text font-weight-heavy ">Dashboard</span>
             </a>
 
             <div class="sidebar">
@@ -45,7 +45,7 @@ if (!isset($_SESSION['username'])) {
                         <li class="nav-item">
                             <a href="chart.php" class="nav-link">
                                 <i class="nav-icon fas fa-chart-bar"></i>
-                                <p>Chart</p>
+                                <p class="text">Chart</p>
                             </a>
                         </li>
                     </ul>
@@ -53,12 +53,17 @@ if (!isset($_SESSION['username'])) {
             </div>
 
             <div class="sidebar-custom">
-                <a href="logout.php" class="btn btn-danger hide-on-collapse pos-right">Logout</a>
+                <div class="nav nav-sidebar">
+                    <a href="logout.php" class="btn btn-danger nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p class="text">Logout</p>
+                    </a>
+                </div>
             </div>
         </aside>
 
         <div class="content-wrapper">
-            <section class="content-header">
+            <section class="content-header text-center">
                 <h1>Chart</h1>
             </section>
 
@@ -106,7 +111,7 @@ if (!isset($_SESSION['username'])) {
             data: {
                 labels: xValues,
                 datasets: [{
-                    backgroundColor: "red",
+                    backgroundColor: "orange",
                     data: yValues
                 }]
             },
@@ -132,13 +137,9 @@ if (!isset($_SESSION['username'])) {
     </script>
     
     <script src="dist/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
     <script src="dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
     <script src="dist/plugins/chart.js/Chart.min.js"></script>
-    <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>   
 </body>
 </html>
