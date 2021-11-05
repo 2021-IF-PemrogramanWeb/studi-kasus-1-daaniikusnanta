@@ -6,8 +6,6 @@ if (isset($_SESSION['username'])) {
 }
 
 include_once("connection.php");
-$db = Database::getInstance();
-$conn = $db->getConnection(); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

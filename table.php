@@ -82,8 +82,7 @@ if (!isset($_SESSION['username'])) {
                                 <tbody>
                                     <?php
                                         include_once("connection.php");
-                                        $db = Database::getInstance();
-                                        $conn = $db->getConnection(); 
+                                        
                                         $sql = "SELECT c.ondate, c.offdate, e1.name AS disbyname, e2.name AS ackbyname, r.description AS reason FROM car c
                                             INNER JOIN employees e1 ON c.disbyid = e1.id
                                             INNER JOIN employees e2 ON c.ackbyid = e2.id

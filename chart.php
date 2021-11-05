@@ -82,8 +82,6 @@ if (!isset($_SESSION['username'])) {
 
     <script>
         var xValues = [<?php include_once("connection.php");
-                        $db = Database::getInstance();
-                        $conn = $db->getConnection(); 
                         
                         $sql = "SELECT description FROM `reasons`";
                         $result = $conn->query($sql);
@@ -94,8 +92,6 @@ if (!isset($_SESSION['username'])) {
                         ?>];
 
         var yValues = [<?php include_once("connection.php");
-                        $db = Database::getInstance();
-                        $conn = $db->getConnection(); 
                         
                         $sql = "SELECT COUNT(*) AS count, r.description FROM car c JOIN reasons r 
                             ON c.reasonid = r.id GROUP BY c.reasonid";
